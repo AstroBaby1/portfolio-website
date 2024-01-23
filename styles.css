@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212; /* Dark mode background color */
+    color: #fff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide scroll bars during animation */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2em 0;
+    animation: slideIn 2s ease-out; /* Entrance animation */
+}
+
+h1, h2, h3 {
+    color: #61dafb;
+}
+
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 2s forwards; /* Fade-in animation */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Improved box shadow */
+    position: relative; /* Relative positioning for pseudo-elements */
+}
+
+/* Pseudo-elements for decorative lines */
+section::before,
+section::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: #61dafb;
+    top: 30px;
+    animation: moveLines 4s linear infinite; /* Animation for lines */
+}
+
+section::before {
+    left: 0;
+}
+
+section::after {
+    right: 0;
+}
+
+/* Additional decorative lines */
+section::before {
+    top: 50px;
+    transform: rotate(45deg);
+}
+
+section::after {
+    top: 70px;
+    transform: rotate(-45deg);
+}
+
+@keyframes moveLines {
+    0% {
+        opacity: 0; /* Start with lines hidden */
+    }
+    50% {
+        opacity: 1; /* Fully visible at midpoint */
+    }
+    100% {
+        opacity: 0; /* Fade out at the end */
+    }
+}
+
+h2 {
+    position: relative; /* Relative positioning for pseudo-element */
+}
+
+/* Pseudo-element for underline effect on heading */
+h2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #61dafb;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0); /* Initial scale to hide */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+}
+
+h2:hover::before {
+    transform: scaleX(1); /* Expand the underline on hover */
+    transform-origin: bottom left;
+}
+
+/* Dotted underline on hover for h3 */
+h3:hover {
+    text-decoration: underline;
+    text-decoration-color: #61dafb;
+    text-decoration-style: dotted;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+/* Additional styling for a futuristic look */
+header p {
+    font-size: 1.2em;
+}
+
+/* Border effect for form input */
+form input {
+    border: 1px solid transparent;
+    border-image-source: linear-gradient(45deg, #61dafb, #0084ff); /* Border gradient */
+    border-image-slice: 1;
+    transition: border-image 0.3s ease-in-out;
+}
+
+form input:hover {
+    border-image-source: linear-gradient(45deg, #0084ff, #61dafb); /* Border gradient on hover */
+}
+
+section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-bottom: 10px;
+    color: #61dafb;
+}
+
+form input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    color: #fff;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.2); /* Futuristic glow effect */
+}
+
+form input[type="submit"] {
+    cursor: pointer;
+    background-color: #61dafb;
+    color: #121212;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background-color: #fff;
+    color: #121212;
+    box-shadow: 0 0 20px rgba(97, 218, 251, 0.5); /* Improved box shadow on hover */
+}
+
+/* Hover effect for project cards */
+section div div {
+    background-color: #2c2c2c;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+section div div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(97, 218, 251, 0.5);
+}
+
+/* Gradient overlay on hover for project cards */
+section div div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(97, 218, 251, 0), rgba(97, 218, 251, 0.8));
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+section div div:hover::after {
+    opacity: 1;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+    section {
+        padding: 20px;
+    }
+}
+
+/* Entrance animation keyframes */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
